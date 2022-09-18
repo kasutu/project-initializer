@@ -4,8 +4,8 @@ A bash script tool for developers.
 ## Getting started
 
 setup:
-clone to a desired directory
-add directory path to environment variables
+1. clone to a desired directory
+2. add directory path to environment variables
 
 type in cmd `init <parameter>` to start
 
