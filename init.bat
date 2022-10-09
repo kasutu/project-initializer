@@ -1,7 +1,7 @@
 @echo off
 echo -----------------------------------------------------------------
 echo  Name: Project Initializer
-echo  Version: 1.0.0
+echo  Version: 1.0.1
 echo  By: Jerome Cabugwason
 echo  CopyRight: (c) Sept 2022, All Rights Reserved!
 echo -----------------------------------------------------------------
