@@ -39,6 +39,6 @@ echo [WARN] Please enter a Parameter!
 echo.
 echo Available Parameters
 echo.
-echo ts               Initialize a typscript project with node in the current path.
-echo ts-express       Initialize a typscript-express project with node in the current path.
+echo ts               Initialize a typescript project with node in the current path.
+echo ts-express       Initialize a typescript-express project with node in the current path.
 EXIT /B 0
