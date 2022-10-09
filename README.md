@@ -1,7 +1,7 @@
 # Project-initializer
 A bash script tool for developers.
 
-## Whats New?
+## Changelogs
 #### `V1.0.1`
   - added express with typescript and nodemon
 #### `V1.0.0`
