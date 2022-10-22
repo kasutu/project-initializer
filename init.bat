@@ -10,6 +10,7 @@ echo.
 :init
 IF "%~1"=="ts" GOTO tsinit
 IF "%~1"=="ts-express" GOTO expinit
+IF "%~1"=="java-maven" GOTO java_maven_verify
 SHIFT
 GOTO endinit
 GOTO init
@@ -34,11 +35,29 @@ echo [INFO] ts-express project created!
 echo [INFO] type "npm run dev" to get started!
 EXIT /B 0
 
+:java_maven_verify
+IF [%~2]==[] GOTO endinit
+IF [%~3]==[] GOTO endinit
+
+SET /A hasErrors=0
+
+where mdvn >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Maven is not installed
+where jadva >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Java is not installed
+
+IF %hasErrors%==0 (GOTO java_maven_init)
+EXIT /B 0
+
+:java_maven_init
+echo Initializing...
+CALL mvn archetype:generate -DgroupId=com.%~2.%~3 -DartifactId=%~3 -DarchetypeArtifactId=maven-archetype-simple -DarchetypeVersion=1.4 -DinteractiveMode=false
+EXIT /B 0
+
 :endinit
 echo [WARN] Please enter a Parameter!
 echo.
 echo Available Parameters
 echo.
-echo ts               Initialize a typescript project with node in the current path.
-echo ts-express       Initialize a typescript-express project with node in the current path.
+echo ts                                           Initialize a typescript project with node in the current path.
+echo ts-express                                   Initialize a typescript-express project with node in the current path.
+echo java-maven [companyName] [appName]           Initialize a simple java project with maven in the current path.
 EXIT /B 0
