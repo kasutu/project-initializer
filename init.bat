@@ -41,14 +41,14 @@ IF [%~3]==[] GOTO endinit
 
 SET /A hasErrors=0
 
-where mdvn >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Maven is not installed
-where jadva >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Java is not installed
+where mvn >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Maven is not installed
+where java >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Java is not installed
 
 IF %hasErrors%==0 (GOTO java_maven_init)
 EXIT /B 0
 
 :java_maven_init
-echo Initializing...
+echo [INFO] Initializing...
 CALL mvn archetype:generate -DgroupId=com.%~2.%~3 -DartifactId=%~3 -DarchetypeArtifactId=maven-archetype-simple -DarchetypeVersion=1.4 -DinteractiveMode=false
 EXIT /B 0
 
