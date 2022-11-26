@@ -8,12 +8,20 @@ echo -----------------------------------------------------------------
 echo.
 
 :init
-IF "%~1"=="ts" GOTO tsinit
+IF "%~1"=="ts" GOTO node_verify
 IF "%~1"=="ts-express" GOTO expinit
 IF "%~1"=="java-maven" GOTO java_maven_verify
 SHIFT
 GOTO endinit
 GOTO init
+EXIT /B 0
+
+:node_verify
+SET /A hasErrors=0
+
+where node >nul 2>&1 && SET hasErrors=0 || SET hasErrors=1 && echo [ERROR] Opps! Node is not installed
+
+IF %hasErrors%==0 (GOTO tsinit)
 EXIT /B 0
 
 :tsinit
