@@ -1,7 +1,7 @@
 @echo off
 echo -----------------------------------------------------------------
 echo  Name: Project Initializer
-echo  Version: 1.0.1
+echo  Version: 1.0.2
 echo  By: Jerome Cabugwason
 echo  CopyRight: (c) Sept 2022, All Rights Reserved!
 echo -----------------------------------------------------------------
@@ -18,8 +18,9 @@ EXIT /B 0
 
 :tsinit
 CALL npm init -y
-CALL npm i -D typescript ts-node @types/node
+CALL npm i -D typescript ts-node @types/node jest @types/jest ts-jest
 CALL tsc --init
+CALL npm ts-jest config:init
 echo [INFO] ts project created!
 EXIT /B 0
 
@@ -57,7 +58,7 @@ echo [WARN] Please enter a Parameter!
 echo.
 echo Available Parameters
 echo.
-echo ts                                           Initialize a typescript project with node in the current path.
+echo ts                                           Initialize a typescript project with node and jest in the current path.
 echo ts-express                                   Initialize a typescript-express project with node in the current path.
 echo java-maven [companyName] [appName]           Initialize a simple java project with maven in the current path.
 EXIT /B 0
