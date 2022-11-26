@@ -1,4 +1,7 @@
 @echo off
+SET mypath=%~dp0
+SET current_path=%mypath:~0,-1%
+
 echo -----------------------------------------------------------------
 echo  Name: Project Initializer
 echo  Version: 1.0.2
@@ -27,8 +30,18 @@ EXIT /B 0
 :tsinit
 CALL npm init -y
 CALL npm i -D typescript ts-node @types/node jest @types/jest ts-jest
-CALL tsc --init
-CALL npm ts-jest config:init
+CALL tsc --init --outDir ./dist
+CALL mkdir src dist tests
+
+echo Adding ts-jest config
+set source=%current_path%\configs\jest
+set destination=.\
+
+set listfile=xcopy /L
+set xcopy=xcopy /S/E/V/Q/F/H
+
+%xcopy% "%source%" "%destination%"
+
 echo [INFO] ts project created!
 EXIT /B 0
 
